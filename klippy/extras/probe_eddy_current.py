@@ -155,11 +155,12 @@ class EddyCalibration:
         curpos[2] += 5.
         move(curpos, self.probe_speed)
         # Move sensor over nozzle position
+        move_speed = 50
         pprobe = self.printer.lookup_object("probe")
         x_offset, y_offset, z_offset = pprobe.get_offsets()
         curpos[0] -= x_offset
         curpos[1] -= y_offset
-        move(curpos, self.probe_speed)
+        move(curpos, move_speed)
         # Descend back to bed
         curpos[2] -= 5. - 0.050
         move(curpos, self.probe_speed)

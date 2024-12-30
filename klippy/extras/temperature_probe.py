@@ -193,6 +193,7 @@ class TemperatureProbe:
         toolhead = self.printer.lookup_object("toolhead")
         cur_pos = toolhead.get_position()
         # Move to probe to sample collection position
+        move_speed = 50
         cur_pos[2] += self.horizontal_move_z
         toolhead.manual_move(cur_pos, lift_speed)
         cur_pos[0] -= x_offset
@@ -425,6 +426,7 @@ class TemperatureProbe:
         start_z = curpos[2]
         lift_speed, probe_speed, move_speed = self._get_speeds()
         # Move nozzle to the manual probing position
+        move_speed = 50
         curpos[2] += self.horizontal_move_z
         toolhead.manual_move(curpos, lift_speed)
         curpos[0] = self.start_pos[0]
